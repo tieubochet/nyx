@@ -366,21 +366,154 @@
             <span class="skill-tag">Space Hosting</span>
         </div>
 
-        <div class="section-title" id="posts">Featured Posts</div>
-        <div class="tweet-container">
-            <div class="tweet-card">
-                <blockquote class="twitter-tweet" data-theme="light"><a href="https://x.com/KGeN_IO/status/2051668084344418770"></a></blockquote>
+        <section id="posts">
+    <div class="section-title">Featured Posts</div>
+    
+    <div class="posts-wrapper">
+        <button class="nav-btn prev" onclick="scrollPosts(-1)">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+
+        <div class="tweet-container" id="tweet-scroll">
+            <div class="tweet-card youtube-card">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/cWIgtZ89SVM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <div class="card-info">
+                    <i class="fa-brands fa-youtube" style="color: #ff0000;"></i>
+                    <span>Featured Video</span>
+                </div>
             </div>
+
             <div class="tweet-card">
-                <blockquote class="twitter-tweet" data-theme="light"><a href="https://x.com/tienho_nyx/status/2050571984778756370"></a></blockquote>
+                <blockquote class="twitter-tweet" data-theme="light">
+                    <a href="https://x.com/tienho_nyx/status/2052234088992641296"></a>
+                </blockquote>
             </div>
+
             <div class="tweet-card">
-                <blockquote class="twitter-tweet" data-theme="light"><a href="https://x.com/tienho_nyx/status/2049397085502583240"></a></blockquote>
+                <blockquote class="twitter-tweet" data-theme="light">
+                    <a href="https://x.com/tienho_nyx/status/2052210460225867887"></a>
+                </blockquote>
             </div>
+
             <div class="tweet-card">
-                <blockquote class="twitter-tweet" data-theme="light"><a href="https://x.com/tienho_nyx/status/2051894241228689415"></a></blockquote>
+                <blockquote class="twitter-tweet" data-theme="light">
+                    <a href="https://x.com/tienho_nyx/status/2052004283680473396"></a>
+                </blockquote>
             </div>
         </div>
+
+        <button class="nav-btn next" onclick="scrollPosts(1)">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+    </div>
+</section>
+
+<style>
+    /* CSS bổ sung để hỗ trợ hiển thị 2 mục và nút bấm */
+    .posts-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .tweet-container {
+        display: flex;
+        gap: 20px;
+        overflow-x: hidden; /* Ẩn thanh cuộn để dùng nút bấm */
+        scroll-behavior: smooth;
+        padding: 10px;
+        width: 100%;
+    }
+
+    .tweet-card {
+        /* Tính toán để hiển thị chính xác 2 card (trừ đi gap) */
+        min-width: calc(50% - 10px); 
+        max-width: calc(50% - 10px);
+        background: white;
+        border: 3px solid var(--border-color);
+        border-radius: 20px;
+        box-shadow: 6px 6px 0px var(--shadow-color);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Style cho YouTube Card */
+    .youtube-card {
+        background: #fff;
+    }
+    .video-container {
+        position: relative;
+        padding-bottom: 56.25%; /* Tỉ lệ 16:9 */
+        height: 0;
+    }
+    .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-bottom: 3px solid var(--border-color);
+    }
+    .card-info {
+        padding: 12px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
+    }
+
+    /* Style cho nút Next/Prev */
+    .nav-btn {
+        width: 45px;
+        height: 45px;
+        border: 3px solid var(--border-color);
+        background: var(--pink);
+        box-shadow: 4px 4px 0px var(--shadow-color);
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+        transition: 0.1s;
+        flex-shrink: 0;
+    }
+    .nav-btn:active {
+        transform: translate(2px, 2px);
+        box-shadow: 2px 2px 0px var(--shadow-color);
+    }
+    .nav-btn:hover {
+        background: var(--yellow);
+    }
+
+    @media (max-width: 768px) {
+        .tweet-card {
+            min-width: 100%; /* Trên mobile thì hiện 1 cái */
+        }
+        .nav-btn {
+            display: none; /* Mobile dùng vuốt tay nên ẩn nút cho gọn */
+        }
+        .tweet-container {
+            overflow-x: auto;
+        }
+    }
+</style>
+
+<script>
+    function scrollPosts(direction) {
+        const container = document.getElementById('tweet-scroll');
+        const cardWidth = container.querySelector('.tweet-card').offsetWidth + 20; // width + gap
+        container.scrollBy({
+            left: direction * cardWidth,
+            behavior: 'smooth'
+        });
+    }
+</script>
 
         <div class="section-title" id="contact">Let's Connect</div>
         <div class="contact-wrap">
