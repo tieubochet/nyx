@@ -411,97 +411,71 @@
 </section>
 
 <style>
-    /* CSS bổ sung để hỗ trợ hiển thị 2 mục và nút bấm */
-    .posts-wrapper {
-        position: relative;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
+    /* Container chính chứa các bài đăng và nút điều hướng */
+.posts-wrapper {
+    position: relative; /* Cho phép các nút điều hướng nằm đè lên */
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+}
 
-    .tweet-container {
-        display: flex;
-        gap: 20px;
-        overflow-x: hidden; /* Ẩn thanh cuộn để dùng nút bấm */
-        scroll-behavior: smooth;
-        padding: 10px;
-        width: 100%;
-    }
+/* Nút điều hướng - Nằm đè lên trên các bài đăng */
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 45px;
+    height: 45px;
+    border: 3px solid var(--border-color);
+    background: var(--pink);
+    box-shadow: 4px 4px 0px var(--shadow-color);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100; /* Đảm bảo luôn nằm trên các post */
+    transition: 0.1s;
+}
 
-    .tweet-card {
-        /* Tính toán để hiển thị chính xác 2 card (trừ đi gap) */
-        min-width: calc(50% - 10px); 
-        max-width: calc(50% - 10px);
-        background: white;
-        border: 3px solid var(--border-color);
-        border-radius: 20px;
-        box-shadow: 6px 6px 0px var(--shadow-color);
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-    }
+.nav-btn.prev { left: -22px; } /* Đẩy nhẹ ra ngoài mép để tạo điểm nhấn */
+.nav-btn.next { right: -22px; }
 
-    /* Style cho YouTube Card */
-    .youtube-card {
-        background: #fff;
-    }
-    .video-container {
-        position: relative;
-        padding-bottom: 56.25%; /* Tỉ lệ 16:9 */
-        height: 0;
-    }
-    .video-container iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border-bottom: 3px solid var(--border-color);
-    }
-    .card-info {
-        padding: 12px;
-        font-weight: bold;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        font-size: 14px;
-    }
+.nav-btn:active {
+    transform: translateY(-50%) translate(2px, 2px);
+    box-shadow: 2px 2px 0px var(--shadow-color);
+}
 
-    /* Style cho nút Next/Prev */
-    .nav-btn {
-        width: 45px;
-        height: 45px;
-        border: 3px solid var(--border-color);
-        background: var(--pink);
-        box-shadow: 4px 4px 0px var(--shadow-color);
-        border-radius: 50%;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 10;
-        transition: 0.1s;
-        flex-shrink: 0;
-    }
-    .nav-btn:active {
-        transform: translate(2px, 2px);
-        box-shadow: 2px 2px 0px var(--shadow-color);
-    }
-    .nav-btn:hover {
-        background: var(--yellow);
-    }
+.nav-btn:hover { background: var(--yellow); }
 
-    @media (max-width: 768px) {
-        .tweet-card {
-            min-width: 100%; /* Trên mobile thì hiện 1 cái */
-        }
-        .nav-btn {
-            display: none; /* Mobile dùng vuốt tay nên ẩn nút cho gọn */
-        }
-        .tweet-container {
-            overflow-x: auto;
-        }
-    }
+/* Container chứa các tweet và video */
+.tweet-container {
+    display: flex;
+    gap: 20px;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    padding: 10px 0; /* Loại bỏ padding ngang để show full */
+    width: 100%;
+}
+
+/* Card bài đăng - Hiển thị 2 cái mỗi hàng */
+.tweet-card {
+    min-width: calc(50% - 10px); 
+    max-width: calc(50% - 10px);
+    background: white;
+    border: 3px solid var(--border-color);
+    border-radius: 20px;
+    box-shadow: 6px 6px 0px var(--shadow-color);
+    overflow: hidden;
+    flex-shrink: 0; /* Không cho phép bóp méo kích thước */
+}
+
+/* Mobile: Hiện 1 bài đăng và ẩn nút điều hướng */
+@media (max-width: 768px) {
+    .tweet-card { min-width: 100%; }
+    .nav-btn { display: none; }
+    .tweet-container { overflow-x: auto; padding: 10px 5px; }
+}
 </style>
 
 <script>
