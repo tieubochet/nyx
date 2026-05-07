@@ -1,365 +1,387 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>saintlee Web3 Researcher & Content Creator</title>
-<meta name="description" content="Saint Lee (@saintlee) Web3 researcher, content creator & community builder. Turning complex protocols into clear narratives since 2021.">
-<meta property="og:title" content="saintlee Web3 Researcher & Content Creator">
-<meta property="og:description" content="Web3 researcher, content creator & community builder since 2021.">
-<meta property="og:type" content="website">
-<style>
-  *{margin:0;padding:0;box-sizing:border-box}
-  :root{
-    --bg:#0d0d0d;--bg2:#141414;--bg3:#1a1a1a;
-    --border:#2a2a2a;--border2:#333;
-    --text:#e8e8e8;--text2:#999;--text3:#555;
-    --accent:#c8f55a;--accent2:#a8d43a;
-    --radius:10px;--radius-sm:6px;
-  }
-  html{scroll-behavior:smooth}
-  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.6}
-  a{color:inherit;text-decoration:none}
-  .container{max-width:720px;margin:0 auto;padding:0 24px}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>saintlee | Web3 Researcher & Content Creator</title>
+    <style>
+        :root {
+            --bg-color: #fdf6f0;
+            --border-color: #000000;
+            --shadow-color: #000000;
+            --pink: #ffb7c5;
+            --yellow: #ffeead;
+            --blue: #a0e7ff;
+            --green: #b2f7ef;
+            --purple: #d0bdf4;
+            --font-main: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
 
-  /* NAV */
-  nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,13,13,0.85);backdrop-filter:blur(12px);border-bottom:0.5px solid var(--border)}
-  .nav-inner{max-width:720px;margin:0 auto;padding:0 24px;height:52px;display:flex;align-items:center;justify-content:space-between}
-  .nav-logo{font-size:15px;font-weight:600;color:var(--accent);letter-spacing:-0.3px}
-  .nav-links{display:flex;gap:24px}
-  .nav-links a{font-size:13px;color:var(--text2);transition:color .2s}
-  .nav-links a:hover{color:var(--text)}
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  /* HERO */
-  .hero{padding:120px 0 64px}
-  .hero-top{display:flex;align-items:center;gap:20px;margin-bottom:28px}
-  .avatar{width:72px;height:72px;border-radius:50%;object-fit:cover;border:2px solid var(--border2)}
-  .hero-meta{}
-  .hero-name{font-size:28px;font-weight:700;letter-spacing:-0.5px;margin-bottom:2px}
-  .hero-handle{font-size:14px;color:var(--text2)}
-  .hero-tagline{font-size:17px;line-height:1.65;color:var(--text2);max-width:560px;margin-bottom:28px}
-  .hero-tagline strong{color:var(--text)}
-  .hero-links{display:flex;flex-wrap:wrap;gap:10px}
-  .link-pill{display:inline-flex;align-items:center;gap:7px;font-size:13px;padding:7px 14px;border-radius:20px;border:0.5px solid var(--border2);color:var(--text2);transition:all .2s}
-  .link-pill:hover{border-color:var(--accent);color:var(--accent)}
-  .link-pill.primary{background:var(--accent);color:#0d0d0d;border-color:var(--accent);font-weight:600}
-  .link-pill.primary:hover{background:var(--accent2);border-color:var(--accent2)}
+        body {
+            background-color: var(--bg-color);
+            background-image: radial-gradient(#d1d1d1 1.5px, transparent 1.5px);
+            background-size: 25px 25px;
+            font-family: var(--font-main);
+            color: #1a1a1a;
+            line-height: 1.5;
+            padding: 40px 20px;
+            scroll-behavior: smooth;
+        }
 
-  /* SECTIONS */
-  section{padding:56px 0;border-top:0.5px solid var(--border)}
-  .sec-label{font-size:11px;font-weight:600;letter-spacing:1.4px;text-transform:uppercase;color:var(--text3);margin-bottom:24px}
+        .container { max-width: 850px; margin: 0 auto; }
 
-  /* FOCUS */
-  .focus-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px}
-  .focus-card{background:var(--bg2);border:0.5px solid var(--border);border-radius:var(--radius);padding:14px 16px;transition:border-color .2s}
-  .focus-card:hover{border-color:var(--border2)}
-  .focus-card .f-name{font-size:13px;font-weight:600;margin-bottom:3px}
-  .focus-card .f-sub{font-size:12px;color:var(--text2)}
+        /* Common Brutalist Card */
+        .card {
+            background: white;
+            border: 3px solid var(--border-color);
+            box-shadow: 6px 6px 0px var(--shadow-color);
+            border-radius: 12px;
+            margin-bottom: 30px;
+            padding: 24px;
+        }
 
-  /* TIMELINE */
-  .timeline{position:relative;padding-left:22px}
-  .timeline::before{content:'';position:absolute;left:6px;top:8px;bottom:8px;width:1px;background:var(--border2)}
-  .tl-item{position:relative;margin-bottom:28px}
-  .tl-item:last-child{margin-bottom:0}
-  .tl-dot{position:absolute;left:-18px;top:6px;width:8px;height:8px;border-radius:50%;background:var(--border2);border:1.5px solid var(--bg)}
-  .tl-dot.now{background:var(--accent);border-color:var(--bg)}
-  .tl-header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:2px}
-  .tl-role{font-size:14px;font-weight:600}
-  .tl-date{font-size:11px;color:var(--text3);background:var(--bg3);padding:2px 9px;border-radius:12px;white-space:nowrap;flex-shrink:0}
-  .tl-co{font-size:12px;color:var(--accent);margin-bottom:5px;font-weight:500}
-  .tl-desc{font-size:13px;color:var(--text2);line-height:1.6}
-  .tl-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
-  .tag{font-size:11px;padding:2px 9px;border-radius:12px;border:0.5px solid var(--border2);color:var(--text3)}
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
 
-  /* ACHIEVEMENTS */
-  .ach-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-  .ach{background:var(--bg2);border:0.5px solid var(--border);border-radius:var(--radius);padding:14px 16px;border-left:2px solid var(--accent)}
-  .ach .at{font-size:13px;font-weight:600;margin-bottom:4px}
-  .ach .ad{font-size:12px;color:var(--text2);line-height:1.5}
+        .nav-logo {
+            background: var(--pink);
+            padding: 8px 16px;
+            font-weight: bold;
+            border: 3px solid var(--border-color);
+            box-shadow: 4px 4px 0px var(--shadow-color);
+            border-radius: 4px;
+            text-transform: lowercase;
+        }
 
-  /* SKILLS */
-  .skill-wrap{display:flex;flex-wrap:wrap;gap:8px}
-  .skill{font-size:12px;padding:5px 12px;border-radius:20px;border:0.5px solid var(--border);color:var(--text2);background:var(--bg2)}
+        .nav-links { display: flex; gap: 20px; }
+        .nav-links a { text-decoration: none; color: black; font-weight: 600; font-size: 14px; }
 
+        /* Hero Section */
+        .hero-header { display: flex; align-items: center; gap: 20px; margin-bottom: 20px; }
+        .avatar-circle {
+            width: 80px; height: 80px;
+            background: var(--blue);
+            border: 3px solid var(--border-color);
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        .avatar-circle img { width: 100%; height: 100%; object-fit: cover; }
 
+        .hero-info h1 { font-size: 32px; margin-bottom: 4px; }
+        .location-tag {
+            display: inline-block;
+            background: var(--purple);
+            padding: 2px 10px;
+            border: 2px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
 
-  /* CONTACT */
-  .contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
-  .contact-info{}
-  .contact-info p{font-size:14px;color:var(--text2);line-height:1.7;margin-bottom:20px}
-  .contact-links{display:flex;flex-direction:column;gap:10px}
-  .contact-link{display:flex;align-items:center;gap:12px;font-size:13px;color:var(--text2);padding:10px 14px;background:var(--bg2);border:0.5px solid var(--border);border-radius:var(--radius-sm);transition:all .2s}
-  .contact-link:hover{border-color:var(--border2);color:var(--text)}
-  .contact-link .icon{width:18px;text-align:center;font-size:14px;flex-shrink:0}
-  .contact-form{background:var(--bg2);border:0.5px solid var(--border);border-radius:var(--radius);padding:24px}
-  .form-title{font-size:14px;font-weight:600;margin-bottom:18px}
-  .form-group{margin-bottom:14px}
-  .form-group label{display:block;font-size:12px;color:var(--text2);margin-bottom:6px;font-weight:500}
-  .form-group input,.form-group textarea{width:100%;background:var(--bg3);border:0.5px solid var(--border2);border-radius:var(--radius-sm);padding:10px 12px;font-size:13px;color:var(--text);font-family:inherit;outline:none;transition:border-color .2s}
-  .form-group input:focus,.form-group textarea:focus{border-color:var(--accent)}
-  .form-group textarea{resize:vertical;min-height:90px}
-  .form-btn{width:100%;padding:11px;background:var(--accent);border:none;border-radius:var(--radius-sm);font-size:14px;font-weight:700;color:#0d0d0d;cursor:pointer;transition:background .2s;font-family:inherit}
-  .form-btn:hover{background:var(--accent2)}
-  .form-note{font-size:11px;color:var(--text3);text-align:center;margin-top:10px}
+        .tagline { font-size: 16px; margin-top: 15px; color: #333; }
+        .tagline a { color: #000; font-weight: bold; text-decoration: underline; }
 
-  /* FOOTER */
-  footer{padding:32px 0;border-top:0.5px solid var(--border);text-align:center}
-  footer p{font-size:12px;color:var(--text3)}
-  footer span{color:var(--accent)}
+        .hero-btns { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 25px; }
 
-  /* RESPONSIVE */
-  @media(max-width:600px){
-    .hero-name{font-size:22px}
-    .hero-tagline{font-size:15px}
-    .ach-grid,.contact-wrap{grid-template-columns:1fr}
-    .nav-links{display:none}
-  }
+        .btn {
+            padding: 10px 20px;
+            border: 3px solid var(--border-color);
+            box-shadow: 4px 4px 0px var(--shadow-color);
+            border-radius: 8px;
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            transition: 0.1s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+        .btn:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0px var(--shadow-color); }
+        .btn-pink { background: var(--pink); }
+        .btn-white { background: white; }
+        .btn-blue { background: var(--blue); }
 
-  /* MODAL */
-  .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:200;align-items:center;justify-content:center;padding:20px}
-  .modal-overlay.open{display:flex}
-  .modal{background:var(--bg2);border:0.5px solid var(--border2);border-radius:14px;padding:28px;max-width:380px;width:100%;text-align:center}
-  .modal h3{font-size:16px;font-weight:600;margin-bottom:10px}
-  .modal p{font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:20px}
-  .modal-btns{display:flex;gap:10px}
-  .modal-btn{flex:1;padding:10px;border-radius:var(--radius-sm);font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .2s}
-  .modal-btn.primary{background:var(--accent);color:#0d0d0d;border:none}
-  .modal-btn.primary:hover{background:var(--accent2)}
-  .modal-btn.secondary{background:transparent;color:var(--text2);border:0.5px solid var(--border2)}
-  .modal-btn.secondary:hover{border-color:var(--text2);color:var(--text)}
-</style>
+        /* Section Titles */
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 50px 0 25px;
+        }
+        .section-title::before { content: "●"; }
+
+        /* Focus Areas Grid */
+        .grid-focus {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+        .focus-card {
+            padding: 20px;
+            border: 3px solid var(--border-color);
+            box-shadow: 5px 5px 0px var(--shadow-color);
+            border-radius: 12px;
+        }
+        .focus-card h3 { font-size: 16px; margin-bottom: 8px; }
+        .focus-card p { font-size: 13px; opacity: 0.8; }
+
+        /* Experience Timeline */
+        .timeline { position: relative; padding-left: 20px; }
+        .timeline::before {
+            content: ''; position: absolute; left: 0; top: 10px; bottom: 0;
+            width: 3px; background: var(--border-color);
+        }
+        .exp-item { position: relative; margin-bottom: 30px; }
+        .exp-dot {
+            position: absolute; left: -26px; top: 6px;
+            width: 10px; height: 10px; background: white;
+            border: 3px solid var(--border-color); border-radius: 50%;
+        }
+        .exp-dot.now { background: var(--pink); }
+        .exp-header { display: flex; justify-content: space-between; font-weight: bold; margin-bottom: 4px; }
+        .exp-company { color: var(--border-color); font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+        .exp-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+        .tag {
+            font-size: 11px; font-weight: 600; padding: 2px 8px;
+            border: 2px solid var(--border-color); border-radius: 20px;
+            background: white;
+        }
+
+        /* Achievements Grid */
+        .ach-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+        }
+        .ach-card {
+            padding: 16px; border: 3px solid var(--border-color);
+            box-shadow: 4px 4px 0px var(--shadow-color);
+            border-radius: 8px; border-left: 8px solid var(--pink);
+        }
+        .ach-card h4 { font-size: 14px; margin-bottom: 4px; }
+        .ach-card p { font-size: 12px; opacity: 0.8; }
+
+        /* Skills Tags */
+        .skills-wrap { display: flex; flex-wrap: wrap; gap: 10px; }
+        .skill-tag {
+            padding: 6px 14px; border: 2px solid var(--border-color);
+            border-radius: 8px; background: white; font-size: 13px; font-weight: 600;
+            box-shadow: 3px 3px 0px var(--shadow-color);
+        }
+
+        /* Featured Posts Scroll */
+        .tweet-container {
+            display: flex; gap: 16px; overflow-x: auto;
+            padding-bottom: 20px; scrollbar-width: thin;
+        }
+        .tweet-container::-webkit-scrollbar { height: 6px; }
+        .tweet-container::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 10px; }
+        .tweet-card {
+            min-width: 320px; max-width: 320px;
+            background: white; border: 3px solid var(--border-color);
+            border-radius: 12px; box-shadow: 5px 5px 0px var(--shadow-color);
+            overflow: hidden;
+        }
+
+        /* Contact Section */
+        .contact-wrap { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .contact-links-list { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
+        .contact-item {
+            display: flex; align-items: center; gap: 12px; padding: 12px;
+            border: 3px solid var(--border-color); border-radius: 8px;
+            background: white; text-decoration: none; color: black; font-weight: 600;
+            box-shadow: 4px 4px 0px var(--shadow-color);
+        }
+
+        .form-card {
+            background: var(--yellow); padding: 24px;
+            border: 3px solid var(--border-color); border-radius: 12px;
+            box-shadow: 6px 6px 0px var(--shadow-color);
+        }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; font-weight: bold; margin-bottom: 6px; font-size: 14px; }
+        input, textarea {
+            width: 100%; padding: 12px; border: 3px solid var(--border-color);
+            border-radius: 6px; font-family: inherit; font-size: 14px;
+        }
+
+        footer {
+            margin-top: 80px; text-align: center; font-size: 13px; font-weight: bold;
+            border-top: 3px solid var(--border-color); padding: 30px 0;
+        }
+
+        @media (max-width: 600px) {
+            .hero-header { flex-direction: column; text-align: center; }
+            .nav-links { display: none; }
+        }
+    </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-inner">
-    <div class="nav-logo">saintlee</div>
-    <div class="nav-links">
-      <a href="#about">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#posts">Posts</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </div>
-</nav>
+    <div class="container">
+        <nav>
+            <div class="nav-logo">saintlee</div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#experience">Experience</a>
+                <a href="#posts">Posts</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
 
-<!-- HERO -->
-<div class="container">
-  <div class="hero" id="about">
-    <div class="hero-top">
-      <img class="avatar" src="images/nyx-avt.jpg" alt="nyx">
-      <div class="hero-meta">
-        <div class="hero-name">Nyx</div>
-        <div class="hero-handle">@tienho_nyx · Da Nang, Vietnam</div>
-      </div>
-    </div>
-    <div class="hero-tagline">
-      Content creator #Web3 | <a href="https://x.com/SoSoValueCrypto" target="_blank">@SoSoValueCrypto</a><br/>
-      Ambassador <a href="https://x.com/partykols" target="_blank">@partykols</a><br/>
-      Ambassador <a href="https://x.com/Bitget" target="_blank">@Bitget</a><br/>
-      Mod: <a href="https://t.me/SCPGuild_Chat" target="_blank">https://t.me/SCPGuild_Chat</a><br/>
-    </div>
-    <div class="hero-links">
-      <a class="link-pill primary" href="https://t.me/tienho1" target="_blank">DM on Telegram ↗</a>
-      <a class="link-pill" href="https://x.com/tienho_nyx" target="_blank">𝕏 @tienho_nyx</a>
-      <a class="link-pill" href="#contact">Contact</a>
-      <a class="link-pill" href="#posts">Posts</a>
-    </div>
-  </div>
+        <div class="card" id="about">
+            <div class="hero-header">
+                <div class="avatar-circle">
+                    <img src="images/nyx-avt.jpg" alt="Nyx Avatar">
+                </div>
+                <div class="hero-info">
+                    <h1>Nyx</h1>
+                    <div class="location-tag">📍 Da Nang, Vietnam</div>
+                </div>
+            </div>
+            
+            <div class="tagline">
+                Content creator #Web3 | <a href="https://x.com/SoSoValueCrypto" target="_blank">@SoSoValueCrypto</a><br>
+                Ambassador <a href="https://x.com/partykols" target="_blank">@partykols</a> & <a href="https://x.com/Bitget" target="_blank">@Bitget</a><br>
+                Mod: <a href="https://t.me/SCPGuild_Chat" target="_blank">https://t.me/SCPGuild_Chat</a>
+            </div>
 
-  <!-- FOCUS -->
-  <section id="focus">
-    <div class="sec-label">Focus Areas</div>
-    <div class="focus-grid">
-      <div class="focus-card"><div class="f-name">Onchain AI & Agents</div><div class="f-sub">Infra, inference, autonomous systems</div></div>
-      <div class="focus-card"><div class="f-name">Event Recaps</div><div class="f-sub">Conferences, AMAs, protocol launches</div></div>
-      <div class="focus-card"><div class="f-name">DeFi Strategy</div><div class="f-sub">Yield, tokenomics, DefiLlama</div></div>
-      <div class="focus-card"><div class="f-name">Community Growth</div><div class="f-sub">Discord, ambassador programs</div></div>
-      <div class="focus-card"><div class="f-name">Robotics & Autonomy</div><div class="f-sub">Decentralized physical systems</div></div>
-    </div>
-  </section>
-
-  <!-- EXPERIENCE -->
-  <section id="experience">
-    <div class="sec-label">Experience</div>
-    <div class="timeline">
-
-      <div class="tl-item">
-        <div class="tl-dot now"></div>
-        <div class="tl-header"><span class="tl-role">Ambassador</span><span class="tl-date">Nov 2024 – Present</span></div>
-        <div class="tl-co">Ritual (@Ritualnet) Onchain AI Infrastructure</div>
-        <div class="tl-desc">Content on AI infra & inference layer. Built Vietnamese community awareness. Hosted Web3 Meetup Da Nang 2025.</div>
-        <div class="tl-tags"><span class="tag">Onchain AI</span><span class="tag">Event Host</span><span class="tag">Vietnamese Community</span></div>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-dot now"></div>
-        <div class="tl-header"><span class="tl-role">Community Manager</span><span class="tl-date">Jan 2025 – Present</span></div>
-        <div class="tl-co">Egodao</div>
-        <div class="tl-desc">Community engagement strategy, content creation, user support & team-community bridge.</div>
-        <div class="tl-tags"><span class="tag">Community</span><span class="tag">Discord</span></div>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-dot now"></div>
-        <div class="tl-header"><span class="tl-role">Caffeinated Creator</span><span class="tl-date">Dec 2024 – Present</span></div>
-        <div class="tl-co">Espresso Systems L2 Infrastructure</div>
-        <div class="tl-desc">Content on sequencer, rollup & composability. Simplified technical concepts for Web3 audiences.</div>
-        <div class="tl-tags"><span class="tag">L2 Infra</span><span class="tag">Thread Writing</span></div>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-dot now"></div>
-        <div class="tl-header"><span class="tl-role">Ambassador</span><span class="tl-date">Dec 2024 – Present</span></div>
-        <div class="tl-co">Showdown TCG GameFi</div>
-        <div class="tl-desc">Gaming × blockchain content, tournament promotion & user onboarding.</div>
-        <div class="tl-tags"><span class="tag">GameFi</span><span class="tag">Content</span></div>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-header"><span class="tl-role">Content Creator (Freelance)</span><span class="tl-date">2023 – Present</span></div>
-        <div class="tl-co">Independent / Web3 Ecosystem</div>
-        <div class="tl-desc">Event recaps, protocol breakdowns, narrative threads on X. Styles: Saintlee (prophetic), Pacifica (deep analysis), Minimal Cynical Degen (viral).</div>
-        <div class="tl-tags"><span class="tag">Recap Specialist</span><span class="tag">X Algorithm</span><span class="tag">AI Workflow</span></div>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-header"><span class="tl-role">CM & Researcher</span><span class="tl-date">2022 – 2023</span></div>
-        <div class="tl-co">Mind Ventures · 4EHUB · Metaspace</div>
-        <div class="tl-desc">Research reports, community operations & ambassador content across multiple projects.</div>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-header"><span class="tl-role">Community Manager</span><span class="tl-date">Aug 2021 – Dec 2022</span></div>
-        <div class="tl-co">CoinF · Dfinity Việt Nam · The Parallel</div>
-        <div class="tl-desc">First Web3 roles. ICP ecosystem research, social media strategy & community moderation.</div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ACHIEVEMENTS -->
-  <section>
-    <div class="sec-label">Achievements</div>
-    <div class="ach-grid">
-      <div class="ach"><div class="at">Personal brand since 2021</div><div class="ad">Recognized "saintlee" identity in Vietnamese crypto community</div></div>
-      <div class="ach"><div class="at">Web3 Meetup Da Nang 2025</div><div class="ad">Self-organized: logistics, content, recap & post-event activation</div></div>
-      <div class="ach"><div class="at">Recap specialist</div><div class="ad">Fast, structured event recaps conferences, AMAs, protocol launches</div></div>
-      <div class="ach"><div class="at">Multi-ecosystem</div><div class="ad">Ritual, Espresso, Showdown TCG, Mind Ventures, 4EHUB, CoinF, Dfinity VN</div></div>
-    </div>
-  </section>
-
-  <!-- SKILLS -->
-  <section>
-    <div class="sec-label">Skills</div>
-    <div class="skill-wrap">
-      <span class="skill">Narrative Design</span><span class="skill">Recap Writing</span><span class="skill">Content Strategy</span>
-      <span class="skill">Thread Writing</span><span class="skill">Viral Writing</span><span class="skill">Community Manager</span>
-      <span class="skill">Discord Management</span><span class="skill">Event Organizer</span><span class="skill">Web3 Research</span>
-      <span class="skill">Tokenomics</span><span class="skill">DeFi Strategy</span><span class="skill">DefiLlama</span>
-      <span class="skill">Canva Design</span><span class="skill">OBS Software</span><span class="skill">AI Workflow</span>
-      <span class="skill">Ambassador Program</span>
-    </div>
-  </section>
-
-  <!-- POSTS FROM X -->
-  <section id="posts">
-    <div class="sec-label">Featured Posts</div>
-    <div style="position:relative">
-      <div id="tweet-scroll" style="display:flex;gap:16px;overflow-x:auto;scroll-behavior:smooth;padding-bottom:12px;scrollbar-width:none;-ms-overflow-style:none">
-        <style>#tweet-scroll::-webkit-scrollbar{display:none}</style>
-
-        <div style="min-width:320px;max-width:340px;flex-shrink:0">
-          <blockquote class="twitter-tweet" data-theme="dark" data-dnt="true">
-            <p lang="en" dir="ltr">Loading tweet...</p>
-            &mdash; Nyx (@tienho_nyx)
-            <a href="https://x.com/tienho_nyx/status/2052234088992641296">View on X</a>
-          </blockquote>
+            <div class="hero-btns">
+                <a href="https://t.me/tienho1" class="btn btn-pink">DM on Telegram ✈</a>
+                <a href="https://x.com/tienho_nyx" class="btn btn-white">𝕏 @tienho_nyx</a>
+                <a href="#posts" class="btn btn-blue">View Posts</a>
+            </div>
         </div>
 
-        <div style="min-width:320px;max-width:340px;flex-shrink:0">
-          <blockquote class="twitter-tweet" data-theme="dark" data-dnt="true">
-            <p lang="en" dir="ltr">Loading tweet...</p>
-            &mdash; Nyx (@tienho_nyx)
-            <a href="https://x.com/tienho_nyx/status/2052210460225867887">View on X</a>
-          </blockquote>
+        <div class="section-title">Focus Areas</div>
+        <div class="grid-focus">
+            <div class="focus-card" style="background: var(--yellow);">
+                <h3>Onchain AI & Agents</h3>
+                <p>Infra, inference, autonomous systems</p>
+            </div>
+            <div class="focus-card" style="background: var(--blue);">
+                <h3>Event Recaps</h3>
+                <p>Conferences, AMAs, protocol launches</p>
+            </div>
+            <div class="focus-card" style="background: var(--green);">
+                <h3>DeFi Strategy</h3>
+                <p>Yield, tokenomics, DefiLlama</p>
+            </div>
+            <div class="focus-card" style="background: var(--purple);">
+                <h3>Community Growth</h3>
+                <p>Discord, ambassador programs</p>
+            </div>
         </div>
 
-        <div style="min-width:320px;max-width:340px;flex-shrink:0">
-          <blockquote class="twitter-tweet" data-theme="dark" data-dnt="true">
-            <p lang="en" dir="ltr">Loading tweet...</p>
-            &mdash; Nyx (@tienho_nyx)
-            <a href="https://x.com/tienho_nyx/status/2052004283680473396">View on X</a>
-          </blockquote>
+        <div class="section-title" id="experience">Experience</div>
+        <div class="card">
+            <div class="timeline">
+                <div class="exp-item">
+                    <div class="exp-dot now"></div>
+                    <div class="exp-header"><span>Ambassador</span><span>Nov 2024 – Present</span></div>
+                    <div class="exp-company">Ritual (@Ritualnet) Onchain AI Infrastructure</div>
+                    <p style="font-size: 13px;">Content on AI infra & inference layer. Hosted Web3 Meetup Da Nang 2025.</p>
+                    <div class="exp-tags"><span class="tag">Onchain AI</span><span class="tag">Event Host</span></div>
+                </div>
+
+                <div class="exp-item">
+                    <div class="exp-dot now"></div>
+                    <div class="exp-header"><span>Community Manager</span><span>Jan 2025 – Present</span></div>
+                    <div class="exp-company">Egodao</div>
+                    <p style="font-size: 13px;">Community engagement strategy, content creation, user support.</p>
+                    <div class="exp-tags"><span class="tag">Community</span><span class="tag">Discord</span></div>
+                </div>
+
+                <div class="exp-item">
+                    <div class="exp-dot"></div>
+                    <div class="exp-header"><span>Content Creator (Freelance)</span><span>2023 – Present</span></div>
+                    <div class="exp-company">Independent / Web3 Ecosystem</div>
+                    <p style="font-size: 13px;">Event recaps, protocol breakdowns, narrative threads on X.</p>
+                    <div class="exp-tags"><span class="tag">Recap Specialist</span><span class="tag">X Algorithm</span></div>
+                </div>
+            </div>
         </div>
 
-        <div style="min-width:320px;max-width:340px;flex-shrink:0">
-          <blockquote class="twitter-tweet" data-theme="dark" data-dnt="true">
-            <p lang="en" dir="ltr">Loading tweet...</p>
-            &mdash; Nyx (@tienho_nyx)
-            <a href="https://x.com/tienho_nyx/status/2051894241228689415">View on X</a>
-          </blockquote>
+        <div class="section-title">Achievements</div>
+        <div class="ach-grid">
+            <div class="ach-card">
+                <h4>Personal brand since 2021</h4>
+                <p>Recognized "saintlee" identity in Vietnamese crypto community</p>
+            </div>
+            <div class="ach-card" style="border-left-color: var(--blue);">
+                <h4>Web3 Meetup Da Nang 2025</h4>
+                <p>Self-organized: logistics, content, recap & post-event activation</p>
+            </div>
+            <div class="ach-card" style="border-left-color: var(--green);">
+                <h4>Recap specialist</h4>
+                <p>Fast, structured event recaps conferences, AMAs, protocol launches</p>
+            </div>
         </div>
 
-      </div>
+        <div class="section-title">Skills</div>
+        <div class="skills-wrap">
+            <span class="skill-tag">Narrative Design</span><span class="skill-tag">Recap Writing</span>
+            <span class="skill-tag">Content Strategy</span><span class="skill-tag">Thread Writing</span>
+            <span class="skill-tag">Viral Writing</span><span class="skill-tag">Community Manager</span>
+            <span class="skill-tag">Discord Management</span><span class="skill-tag">Event Organizer</span>
+            <span class="skill-tag">Web3 Research</span><span class="skill-tag">Tokenomics</span>
+            <span class="skill-tag">DeFi Strategy</span><span class="skill-tag">DefiLlama</span>
+            <span class="skill-tag">Canva Design</span><span class="skill-tag">AI Workflow</span>
+        </div>
 
-      <!-- Scroll buttons -->
-      <div style="display:flex;gap:8px;margin-top:12px">
-        <button onclick="document.getElementById('tweet-scroll').scrollBy({left:-360,behavior:'smooth'})"
-          style="background:#1a1a1a;border:0.5px solid #333;color:#999;padding:6px 14px;border-radius:20px;cursor:pointer;font-size:13px;transition:all .2s"
-          onmouseover="this.style.borderColor='#c8f55a';this.style.color='#c8f55a'"
-          onmouseout="this.style.borderColor='#333';this.style.color='#999'">← Prev</button>
-        <button onclick="document.getElementById('tweet-scroll').scrollBy({left:360,behavior:'smooth'})"
-          style="background:#1a1a1a;border:0.5px solid #333;color:#999;padding:6px 14px;border-radius:20px;cursor:pointer;font-size:13px;transition:all .2s"
-          onmouseover="this.style.borderColor='#c8f55a';this.style.color='#c8f55a'"
-          onmouseout="this.style.borderColor='#333';this.style.color='#999'">Next →</button>
-      </div>
+        <div class="section-title" id="posts">Featured Posts</div>
+        <div class="tweet-container">
+            <div class="tweet-card">
+                <blockquote class="twitter-tweet" data-theme="light"><a href="https://x.com/tienho_nyx/status/2052234088992641296"></a></blockquote>
+            </div>
+            <div class="tweet-card">
+                <blockquote class="twitter-tweet" data-theme="light"><a href="https://x.com/tienho_nyx/status/2052210460225867887"></a></blockquote>
+            </div>
+            <div class="tweet-card">
+                <blockquote class="twitter-tweet" data-theme="light"><a href="https://x.com/tienho_nyx/status/2052004283680473396"></a></blockquote>
+            </div>
+            <div class="tweet-card">
+                <blockquote class="twitter-tweet" data-theme="light"><a href="https://x.com/tienho_nyx/status/2051894241228689415"></a></blockquote>
+            </div>
+        </div>
+
+        <div class="section-title" id="contact">Let's Connect</div>
+        <div class="contact-wrap">
+            <div class="contact-info">
+                <p>Open to collaborations, ambassador roles, content partnerships, and community projects. Fastest reply via Telegram.</p>
+                <div class="contact-links-list">
+                    <a href="https://t.me/saintlee0x" class="contact-item">✈ Telegram @saintlee0x</a>
+                    <a href="https://x.com/SaintLee04" class="contact-item">𝕏 Twitter @SaintLee04</a>
+                </div>
+            </div>
+            <div class="form-card">
+                <div class="form-group">
+                    <label>Tên của bạn</label>
+                    <input type="text" placeholder="Your name">
+                </div>
+                <div class="form-group">
+                    <label>Lời nhắn</label>
+                    <textarea placeholder="Bạn đang nghĩ gì?" rows="4"></textarea>
+                </div>
+                <button class="btn btn-white" style="width: 100%; justify-content: center;" onclick="window.open('https://t.me/saintlee0x','_blank')">Gửi qua Telegram ↗</button>
+            </div>
+        </div>
+
+        <footer>
+            © 2025 <span>saintlee</span> · Saint Lee · Da Nang, Vietnam
+        </footer>
     </div>
-  </section>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="sec-label">Contact</div>
-    <div class="contact-wrap">
-      <div class="contact-info">
-        <p>Open to collaborations, ambassador roles, content partnerships, and community projects. Fastest reply via Telegram.</p>
-        <div class="contact-links">
-          <a class="contact-link" href="https://t.me/saintlee0x" target="_blank">
-            <span class="icon">✈</span>
-            <span>Telegram @saintlee0x</span>
-          </a>
-          <a class="contact-link" href="https://x.com/SaintLee04" target="_blank">
-            <span class="icon">𝕏</span>
-            <span>Twitter @SaintLee04</span>
-          </a>
-        </div>
-      </div>
-      <div class="contact-form">
-        <div class="form-title">Send a message</div>
-        <div class="form-group">
-          <label for="cf-name">Name</label>
-          <input type="text" id="cf-name" placeholder="Your name">
-        </div>
-        <div class="form-group">
-          <label for="cf-msg">Message</label>
-          <textarea id="cf-msg" placeholder="What's on your mind?"></textarea>
-        </div>
-        <button class="form-btn" onclick="window.open('https://t.me/saintlee0x','_blank')">Send via Telegram ↗</button>
-        <div class="form-note">Form routes to Telegram DM for fastest response</div>
-      </div>
-    </div>
-  </section>
-
-</div><!-- /container -->
-
-<footer>
-  <p>© 2025 <span>saintlee</span> · Saint Lee · Da Nang, Vietnam</p>
-</footer>
-
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </body>
 </html>
