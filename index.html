@@ -528,8 +528,18 @@
 
 @media (max-width: 768px) {
     .tweet-card { min-width: 100%; }
-    .nav-btn { display: none; }
+    .nav-btn.prev {left: 0;}
+    .nav-btn.next {right: 0;}
     .tweet-container { overflow-x: auto; padding: 10px 5px; }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 70px;
+      margin-bottom: 40px;
+      flex-direction: column;
+      gap: 20px 0;
+  }
 }
 </style>
 
