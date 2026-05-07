@@ -20,14 +20,16 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
         body {
             background-color: var(--bg-color);
             font-family: var(--font-main);
             color: #1a1a1a;
             line-height: 1.5;
             padding: 40px 20px;
-            scroll-behavior: smooth;
         }
 
         .container { max-width: 850px; margin: 0 auto; }
@@ -268,6 +270,22 @@
             .nav-links { display: none; }
         }
     </style>
+    <script>
+    document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 20, // Trừ đi khoảng cách lề trên
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+</script>
 </head>
 <body>
 
