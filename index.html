@@ -41,7 +41,7 @@
           padding: 12px 16px;
           box-sizing: border-box;
         }
-        /* Common Brutalist Card */
+
         .card {
             background: white;
             border: 3px solid var(--border-color);
@@ -51,7 +51,6 @@
             padding: 24px;
         }
 
-        /* Navigation */
         .nav-logo-wrapper {
             display: flex;
             align-items: center;
@@ -59,7 +58,6 @@
             cursor: pointer;
         }
 
-        /* Ô chữ nyx nền xanh chữ trắng */
         .nav-logo-box {
             background: #34a8e0; 
             color: #ffffff; 
@@ -166,7 +164,6 @@
         }
         
 
-        /* Focus Areas Grid */
         .grid-focus {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -181,7 +178,7 @@
         .focus-card h3 { font-size: 16px; margin-bottom: 8px; }
         .focus-card p { font-size: 13px; opacity: 0.8; }
 
-        /* Experience Timeline */
+
         .timeline { position: relative; padding-left: 20px; }
         .timeline::before {
             content: ''; position: absolute; left: 0; top: 10px; bottom: 0;
@@ -203,7 +200,6 @@
             background: white;
         }
 
-        /* Achievements Grid */
         .ach-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -217,7 +213,7 @@
         .ach-card h4 { font-size: 14px; margin-bottom: 4px; }
         .ach-card p { font-size: 12px; opacity: 0.8; }
 
-        /* Skills Tags */
+
         .skills-wrap { display: flex; flex-wrap: wrap; gap: 10px; }
         .skill-tag {
             padding: 6px 14px; border: 2px solid var(--border-color);
@@ -225,7 +221,7 @@
             box-shadow: 3px 3px 0px var(--shadow-color);
         }
 
-        /* Featured Posts Scroll */
+   
         .tweet-container {
             display: flex; gap: 16px; overflow-x: auto;
             padding-bottom: 20px; scrollbar-width: thin;
@@ -238,7 +234,7 @@
             overflow: hidden;
         }
 
-        /* Contact Section */
+
         .contact-wrap { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .contact-links-list { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
         .contact-item {
@@ -279,7 +275,7 @@
             
             if (targetElement) {
                 window.scrollTo({
-                    top: targetElement.offsetTop - 20, // Trừ đi khoảng cách lề trên
+                    top: targetElement.offsetTop - 20, 
                     behavior: 'smooth'
                 });
             }
@@ -474,15 +470,15 @@
 </section>
 
 <style>
-    /* Container chính chứa các bài đăng và nút điều hướng */
+
 .posts-wrapper {
-    position: relative; /* Cho phép các nút điều hướng nằm đè lên */
+    position: relative;
     display: block;
     width: 100%;
     margin-top: 20px;
 }
 
-/* Nút điều hướng - Nằm đè lên trên các bài đăng */
+
 .nav-btn {
     position: absolute;
     top: 50%;
@@ -497,11 +493,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 100; /* Đảm bảo luôn nằm trên các post */
+    z-index: 100; 
     transition: 0.1s;
 }
 
-.nav-btn.prev { left: -22px; } /* Đẩy nhẹ ra ngoài mép để tạo điểm nhấn */
+.nav-btn.prev { left: -22px; } 
 .nav-btn.next { right: -22px; }
 
 .nav-btn:active {
@@ -511,26 +507,26 @@
 
 .nav-btn:hover { background: var(--yellow); }
 
-/* Container chứa các tweet và video */
+
 .tweet-container {
     display: flex;
     gap: 20px;
     overflow-x: hidden;
     scroll-behavior: smooth;
-    padding: 10px 0; /* Loại bỏ padding ngang để show full */
+    padding: 10px 0; 
     width: 100%;
 }
 
-/* Card bài đăng - Hiển thị 2 cái mỗi hàng */
+
 .tweet-card {
     min-width: calc(50% - 10px); 
     max-width: calc(50% - 10px);
     border-radius: 20px;
     overflow: hidden;
-    flex-shrink: 0; /* Không cho phép bóp méo kích thước */
+    flex-shrink: 0; 
 }
 
-/* Mobile: Hiện 1 bài đăng và ẩn nút điều hướng */
+
 @media (max-width: 768px) {
     .tweet-card { min-width: 100%; }
     .nav-btn { display: none; }
