@@ -103,7 +103,6 @@
         .nav-links { display: flex; gap: 20px; }
         .nav-links a { text-decoration: none; color: black; font-weight: 600; font-size: 14px; }
 
-        /* Hero Section */
         .hero-header { display: flex; align-items: center; gap: 20px; margin-bottom: 20px; }
         .avatar-circle {
             width: 80px; height: 80px;
@@ -153,7 +152,6 @@
         .btn-white { background: white; }
         .btn-blue { background: var(--blue); }
 
-        /* Section Titles */
         .section-title {
             display: flex;
             align-items: center;
@@ -275,7 +273,7 @@
             
             if (targetElement) {
                 window.scrollTo({
-                    top: targetElement.offsetTop - 20, 
+                    top: targetElement.offsetTop, 
                     behavior: 'smooth'
                 });
             }
